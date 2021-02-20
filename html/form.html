@@ -1,0 +1,29 @@
+<form style="margin-left: 30px;"> 
+       
+    <div class="orm-control col-5">
+          <label for="exampleInputEmail1">Nome do Produto</label>
+          <input type="text" class="form-control"ng-model="produto.nome" >
+    </div>
+    <div class="form-row" style="margin-top: 10px; margin-left: 10px;">     
+        <div class="form-group col-1">
+                <label for="exampleInputEmail1">Código</label>
+                <input type="text" class="form-control" ng-model="produto.codigo" >
+        </div>
+       <div class="form-group col-2">
+            <label for="exampleInputEmail1">Preço </label>
+            <input type="text" class="form-control" ng-model="produto.preco">
+       </div>
+    </div>  
+    <div >
+        
+         <select  class="form-control" style="width:150px; margin-left: 16px;" ng-model="produto.categoria"
+         ng-options="selectProduto.nome as selectProduto.nome for selectProduto in selectProdutos">
+         <option value="" >Tipos</option>
+         </select>
+    </div>
+       
+    <div style="margin-top: 19px; margin-left: 16px;">
+      <button type="button" class="btn btn-primary"ng-click="salvar(produto)">Cadastrar</button>
+    </div>
+   
+  </form>

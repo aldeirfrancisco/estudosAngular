@@ -1,0 +1,17 @@
+<table class="table" style="margin-left: 8%;">
+    <thead>
+        <tr>
+          <th scope="col-1">Código</th>
+          <th scope="col-5">Nome do Produto</th>
+          <th scope="col-1">Preço</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr ng-repeat="produto in produtos">
+       
+        <td>{{produto.codigo}}</td>
+        <td>{{produto.nome}}</td>
+        <td>R$ {{formatReal(produto.preco)}}</td>
+      </tr>
+    </tbody>
+</table>

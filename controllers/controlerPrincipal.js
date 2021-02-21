@@ -20,23 +20,24 @@ $scope.salvar = function(produto){
         delete $scope.produto;
         $scope.formProduto.$setPristine()
 
+
         console.log($scope.produtos)
  }
  
 
    $scope.formatReal = function (dinheiro){
- 
-         dinheiro = dinheiro+'';
-   
+       
+       dinheiro = dinheiro+'';
+       dinheiro = pegandoSoNumero(dinheiro)
         dinheiro = dinheiro.replace(/([0-9]{2})$/g, ",$1")
 
         if(dinheiro.length >6){
             dinheiro = dinheiro.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
         }
-    
+      
    return dinheiro
 }
-
+ const pegandoSoNumero = dinheiro =>dinheiro.split("").filter(n => (Number(n) || n == 0)).join("");
  
      
 }]);

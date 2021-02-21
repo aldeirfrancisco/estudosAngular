@@ -10,7 +10,10 @@ angular.module('app').directive('formCadastro', function() {
     return {
         require: 'ngModel',
         link: function (scope,element,attrs,ctrl){
-          
+           
+            $(document).ready(function(){
+                $('#CampoPreco').mask("(99) 99999-9999");
+           });
             // var _formataDinheiro = function (dinheiro){
                 
             //     dinheiro = dinheiro.replace(/[^0-9]+g/," ")

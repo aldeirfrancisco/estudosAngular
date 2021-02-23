@@ -1,12 +1,15 @@
 
-angular.module('app').controller('appControler',['$scope',function($scope){
+angular.module('app').controller('appControler',['$scope','cadastroServico',function($scope,cadastroServico){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+$scope.onlyNumbers = /^\d+$/;
 
 
 $scope.produtos=[
      {codigo:3, nome:'café',preco:500,categoria:"bebidas"},
      {codigo:4, nome:'Suco',preco:800,categoria:"bebidas"}
     ];
+  
+
 
 $scope.selectProdutos=[
     {nome:"Bebidas", numero:1},
@@ -19,25 +22,16 @@ $scope.salvar = function(produto){
         //$scope.produto ={codigo:'',nome:'',preco:''} ou
         delete $scope.produto;
         $scope.formProduto.$setPristine()
-
-
-        console.log($scope.produtos)
  }
  
 
-   $scope.formatReal = function (dinheiro){
-       
-       dinheiro = dinheiro+'';
-       dinheiro = pegandoSoNumero(dinheiro)
-        dinheiro = dinheiro.replace(/([0-9]{2})$/g, ",$1")
-
-        if(dinheiro.length >6){
-            dinheiro = dinheiro.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-        }
-      
-   return dinheiro
+$scope.formatReal = function (dinheiro){
+        dinheiro = dinheiro+'';
+        dinheiro = cadastroServico.pegandoSoNumero(dinheiro)
+        dinheiro = cadastroServico.formatarRealServe (dinheiro)
+        return dinheiro
 }
- const pegandoSoNumero = dinheiro =>dinheiro.split("").filter(n => (Number(n) || n == 0)).join("");
+ 
  
      
 }]);

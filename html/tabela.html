@@ -4,14 +4,24 @@
           <th scope="col-1">Código</th>
           <th scope="col-5">Nome do Produto</th>
           <th scope="col-1">Preço</th>
+           <th></th>
         </tr>
       </thead>
     <tbody>
       <tr ng-repeat="produto in produtos">
-       
-        <td>{{produto.codigo}}</td>
+        <td > {{produto.codigo}}</td>
         <td>{{produto.nome}}</td>
         <td>R$ {{formatReal(produto.preco)}}</td>
+       <td>
+          <button type="button" class="btn btn-link"style="color: red;width: 5px;" aria-label="Fechar"> 
+            <span aria-hidden="true">&times;</span> 
+          </button>
+       
+          <button type="button" class="btn btn-link" aria-label="Fechar"> 
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+      </td>
+    
       </tr>
     </tbody>
 </table>

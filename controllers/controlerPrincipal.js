@@ -1,7 +1,7 @@
 
 angular.module('app').controller('appControler',['$scope','cadastroServico',function($scope,cadastroServico){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-$scope.onlyNumbers = /^\d+$/;
+$scope.soNumero = /^\d+$/;
 
 
 $scope.produtos=[

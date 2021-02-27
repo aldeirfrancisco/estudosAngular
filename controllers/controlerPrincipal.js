@@ -31,7 +31,14 @@ $scope.formatReal = function (dinheiro){
         dinheiro = cadastroServico.formatarRealServe (dinheiro)
         return dinheiro
 }
- 
+$scope.deletarProduto= function(produto){
+ for(let index in $scope.produtos){
+     let aux = $scope.produtos[index];
+     if(produto === aux){
+        $scope.produtos.splice(index,1);
+     }
+ }
+}
  
      
 }]);

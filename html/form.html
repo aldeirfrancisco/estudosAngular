@@ -38,7 +38,9 @@
    </div>
         -->
     <div style="margin-top: 30px; margin-left: 16px;">
-      <button type="button" class="btn btn-primary"ng-click="salvar(produto)"ng-disabled="formProduto.$invalid">Cadastrar</button>
+      <button type="button" class="btn btn-primary"ng-click="salvar(produto)"ng-disabled="formProduto.$invalid">{{nomeButao[0]}}</button>
+      <button type="button"ng-show="mostrarButao " class="btn btn-info"ng-click="buscar()">Pesquisar</button>
     </div>
+    
 </form>
  

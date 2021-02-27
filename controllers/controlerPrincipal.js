@@ -2,13 +2,16 @@
 angular.module('app').controller('appControler',['$scope','cadastroServico',function($scope,cadastroServico){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 $scope.soNumero = /^\d+$/;
-
+$scope.mostrarImput=false;
+$scope.mostrarButao = true;
 
 $scope.produtos=[
-     {codigo:3, nome:'café',preco:500,categoria:"bebidas"},
-     {codigo:4, nome:'Suco',preco:800,categoria:"bebidas"}
+     {codigo:2, nome:'café',preco:500,categoria:"bebidas"},
+     {codigo:3, nome:'leite',preco:550,categoria:"bebidas"},
+     {codigo:4, nome:'misto',preco:350,categoria:"bebidas"},
+     {codigo:5, nome:'Suco',preco:800,categoria:"bebidas"}
     ];
-  
+  $scope.nomeButao=["Cadastrar","Atualizar"]
 
 
 $scope.selectProdutos=[
@@ -39,7 +42,17 @@ $scope.deletarProduto= function(produto){
      }
  }
 }
- 
-     
+$scope.buscar=function(){
+    $scope.mostrarImput= true;
+    $scope.mostrarImput ==true ? $scope.mostrarButao = false :$scope.mostrarButao = true 
+
+}
+$scope.pega = function (aqui){
+
+    const buscarPor = cadastroServico.pegandoSoNumero(aqui);
+    console.log(buscarPor)
+       console.log(typeof parseInt(buscarPor))
+         
+}
 }]);
 

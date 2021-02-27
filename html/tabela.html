@@ -1,4 +1,7 @@
-<table class="table" style="margin-left: 8%;">
+
+<buscar-cadastro></buscar-cadastro>
+<hr style="margin-left: 40px;  width: 98%;">
+<table class="table" style="margin-left: 8%;margin-top: 20px;">
     <thead>
         <tr>
           <th scope="col-1">Código</th>
@@ -8,12 +11,12 @@
         </tr>
       </thead>
     <tbody>
-      <tr ng-repeat="produto in produtos">
+      <tr ng-repeat="produto in produtos | filter: nome || codigo">
         <td > {{produto.codigo}}</td>
         <td>{{produto.nome}}</td>
         <td>R$ {{formatReal(produto.preco)}}</td>
        <td>
-          <button type="button" class="btn btn-link"style="color: red;width: 5px;" aria-label="Fechar"> 
+          <button type="button" class="btn btn-link"style="color: red;width: 5px;" aria-label="Fechar" ng-click="deletarProduto(produto)"> 
             <span aria-hidden="true">&times;</span> 
           </button>
        

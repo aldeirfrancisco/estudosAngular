@@ -4,10 +4,7 @@ angular.module('app').directive('formCadastro', function() {
       
         restrict: 'E',
         templateUrl:  'html/form.html',
-        link: function (scope,element,attrs){
-        
-          
-        }
+       
 
     };
   });

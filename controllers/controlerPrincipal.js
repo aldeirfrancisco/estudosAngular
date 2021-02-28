@@ -4,6 +4,7 @@ angular.module('app').controller('appControler',['$scope','cadastroServico',func
 $scope.soNumero = /^\d+$/;
 $scope.mostrarImput=false;
 $scope.mostrarButao = true;
+$scope.indexButao =0;
 
 $scope.produtos=[
      {codigo:2, nome:'café',preco:500,categoria:"bebidas"},
@@ -11,7 +12,8 @@ $scope.produtos=[
      {codigo:4, nome:'misto',preco:350,categoria:"bebidas"},
      {codigo:5, nome:'Suco',preco:800,categoria:"bebidas"}
     ];
-  $scope.nomeButao=["Cadastrar","Atualizar"]
+  $scope.nomeButao=["Cadastrar","Atualizar","Pesquisar"]
+ 
 
 
 $scope.selectProdutos=[
@@ -20,12 +22,13 @@ $scope.selectProdutos=[
     {nome:"Lanche", numero:3}
 ]
 
-$scope.salvar = function(produto){
-        $scope.produtos.push(angular.copy(produto));
-        //$scope.produto ={codigo:'',nome:'',preco:''} ou
-        delete $scope.produto;
-        $scope.formProduto.$setPristine()
- }
+
+ $scope.salvar = function(produto){
+         $scope.produtos.push(angular.copy(produto));
+         //$scope.produto ={codigo:'',nome:'',preco:''} ou
+         delete $scope.produto;
+         $scope.formProduto.$setPristine()
+  }
  
 
 $scope.formatReal = function (dinheiro){
@@ -45,14 +48,8 @@ $scope.deletarProduto= function(produto){
 $scope.buscar=function(){
     $scope.mostrarImput= true;
     $scope.mostrarImput ==true ? $scope.mostrarButao = false :$scope.mostrarButao = true 
-
+    $scope.indexButao=1;
 }
-$scope.pega = function (aqui){
 
-    const buscarPor = cadastroServico.pegandoSoNumero(aqui);
-    console.log(buscarPor)
-       console.log(typeof parseInt(buscarPor))
-         
-}
 }]);
 

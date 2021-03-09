@@ -1,35 +1,56 @@
 
-angular.module('app').controller('appControler',['$scope','cadastroServico',function($scope,cadastroServico){
+angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams',function($scope,cadastroServico,$routeParams){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 $scope.soNumero = /^\d+$/;
 $scope.mostrarImput=false;
 $scope.mostrarButao = true;
-$scope.indexButao =0;
+$scope.categoria ="Tipos";
+$scope.butaoNome="salvar";
+$scope.nomeAcao="salvar";
 
 $scope.produtos=[
-     {codigo:2, nome:'café',preco:500,categoria:"bebidas"},
-     {codigo:3, nome:'leite',preco:550,categoria:"bebidas"},
-     {codigo:4, nome:'misto',preco:350,categoria:"bebidas"},
-     {codigo:5, nome:'Suco',preco:800,categoria:"bebidas"}
-    ];
-  $scope.nomeButao=["Cadastrar","Atualizar","Pesquisar"]
- 
+  {id:1,codigo:2, nome:'café',preco:500,categoria:"Bebidas"},
+  {id:2,codigo:3, nome:'Calabresa',preco:550,categoria:"pizzas"},
+  {id:3,codigo:4, nome:'misto',preco:350,categoria:"Lanche"},
+  {id:4,codigo:5, nome:'Suco',preco:800,categoria:"bebidas"}
+];
+ $scope.nomeButao=["Pesquisar"]
+
+ if($routeParams.id){
+  let id =$routeParams.id -1; 
+  $scope.categoria =$scope.produtos[id].categoria
+    $scope.produto = $scope.produtos[id]
+    $scope.butaoNome="atualizar";
+    $scope.mostrarImput ==false ? $scope.mostrarButao = false :$scope.mostrarButao = true 
+}
+
 
 
 $scope.selectProdutos=[
-    {nome:"Bebidas", numero:1},
-    {nome:"Pizzas", numero:2},
-    {nome:"Lanche", numero:3}
-]
+  {categoria:"Bebidas", numero:1},
+  {categoria:"Pizzas", numero:2},
+  {categoria:"Lanche", numero:3}
+  ]
 
 
- $scope.salvar = function(produto){
-         $scope.produtos.push(angular.copy(produto));
-         //$scope.produto ={codigo:'',nome:'',preco:''} ou
-         delete $scope.produto;
-         $scope.formProduto.$setPristine()
-  }
- 
+const salvar = function(produto){
+  $scope.produtos.push(angular.copy(produto));
+  //$scope.produto ={codigo:'',nome:'',preco:''} ou
+  delete $scope.produto;
+  $scope.categoria ="Tipos";
+  $scope.formProduto.$setPristine()
+}
+$scope.acaoes ={
+         atualizar:{
+              nome:"atualizar", 
+              acao: salvar 
+              },
+        salvar:{
+              nome:"Cadastrar",
+              acao:salvar
+             }
+              }
+  
 
 $scope.formatReal = function (dinheiro){
         dinheiro = dinheiro+'';
@@ -45,10 +66,10 @@ $scope.deletarProduto= function(produto){
      }
  }
 }
-$scope.buscar=function(){
+$scope.pesquisar=function(){
     $scope.mostrarImput= true;
     $scope.mostrarImput ==true ? $scope.mostrarButao = false :$scope.mostrarButao = true 
-    $scope.indexButao=1;
+    $scope.butaoNome="atualizar";
 }
 
 }]);

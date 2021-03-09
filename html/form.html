@@ -29,8 +29,8 @@
     <div >
         
          <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produto.categoria"
-         ng-options="selectProduto.nome as selectProduto.nome for selectProduto in selectProdutos" ng-required="true">
-         <option value="" >Tipos</option>
+         ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true">
+         <option value="" >{{categoria}}</option>
          </select>
     </div>
     <div ng-show="formProduto.tipo.$error.required && formProduto.tipo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
@@ -38,10 +38,13 @@
    </div>
         
     <div style="margin-top: 30px; margin-left: 16px;">
-      <btn-butao  btn-nome="nomeButao[indexButao]"acao="salvar(produto)"disabiltar="formProduto.$invalid"></btn-butao>
-      <btn-butao btn-nome ="nomeButao[2]"acao="buscar()" ng-show="mostrarButao "></btn-butao>
+      <btn-butao  btn-nome="acaoes[butaoNome].nome"acao="acaoes[nomeAcao].acao(produto)"disabiltar="formProduto.$invalid"></btn-butao>
+      <btn-butao btn-nome ="nomeButao[0]"acao="pesquisar()" ng-show="mostrarButao "></btn-butao>
     
     </div>
     
 </form>
+<div style="margin-right: 60%;margin-top: 20px;">
+  <tabelas-produtos></tabelas-produtos>
+</div> 
  

@@ -8,7 +8,7 @@ angular.module('app')
                     .when('/cadastrar',{
                             templateUrl: 'html/form.html',
                             controller: 'appControler',
-                });
+            });
             $routeProvider
                     .when('/cadastrar/editar/:id',{
                             templateUrl: 'html/form.html',
@@ -18,7 +18,12 @@ angular.module('app')
             .when('/cadastrar/caixa',{
                     templateUrl: 'html/caixa.html',
                     //controller: 'appControler',
-    });
-            $routeProvider.otherwise({redirectTo: '/cadastrar/caixa'});
+             });
+             $routeProvider
+             .when('/cadastrar/modalEndereco',{
+                     templateUrl: 'html/modalEndereco.html',
+                     //controller: 'appControler',
+              });
+            $routeProvider.otherwise({redirectTo: '/cadastrar/modalEndereco'});
         });
   

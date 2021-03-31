@@ -13,19 +13,6 @@
 
         }
        
-        this.bucarProduto =function(){
-             
-            const data={};
-            $http.get(`/produtos`).then(function(response){
-              
-             data = response.data;
-            },function(err){
-                     console.log(err)
-                });
-                return data;
-         }
-       
-      
         
 
 

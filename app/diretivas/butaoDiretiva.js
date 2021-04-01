@@ -7,7 +7,7 @@ angular.module('app').directive('btnButao', function() {
            disabiltar:"=",
            btnNome:"=",
            acao :"&",
-       }
+           style:"=",       }
     };
   });
   /*btnnome e o nome da variavel que vai na div do butao eo botaoNome 

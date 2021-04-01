@@ -19,11 +19,7 @@ angular.module('app')
                     templateUrl: 'html/caixa.html',
                     //controller: 'appControler',
              });
-             $routeProvider
-             .when('/cadastrar/modalEndereco',{
-                     templateUrl: 'html/modalEndereco.html',
-                     //controller: 'appControler',
-              });
-            $routeProvider.otherwise({redirectTo: '/cadastrar/modalEndereco'});
+            
+            $routeProvider.otherwise({redirectTo: '/cadastrar/caixa'});
         });
   

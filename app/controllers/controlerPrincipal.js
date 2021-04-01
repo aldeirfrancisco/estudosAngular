@@ -19,7 +19,6 @@ $scope.produtos=[
  $scope.nomeButao=["Pesquisar"]
 
  if($routeParams.id){
-   apiFactory.buscarProduto()
   let id =$routeParams.id -1; 
   $scope.categoria =$scope.produtos[id].categoria
     $scope.produto = $scope.produtos[id]
@@ -44,16 +43,29 @@ const salvar = function(produto){
   $scope.categoria ="Tipos";
   $scope.formProduto.$setPristine()
 }
-$scope.acaoes ={
+const atualizar= function(produto){
+  $scope.butaoNome="atualizar";
+  $scope.nomeAcao="atualizar";
+  deletarProduto(produto);
+  salvar(produto)
+}
+$scope.acoes ={
          atualizar:{
-              nome:"atualizar", 
-              acao: salvar 
+              nome:"Atualizar", 
+              acao: atualizar,
+              style:"btn-primary",
               },
         salvar:{
               nome:"Cadastrar",
-              acao:salvar
-             }
-              }
+              acao:salvar,
+              style:"btn-primary"
+             },
+        pesquisar:{
+                  nome:"Pesquisar",
+                  acao:salvar,
+                  style:"btn-primary"    
+            }
+                }
   
 
 $scope.formatReal = function (dinheiro){

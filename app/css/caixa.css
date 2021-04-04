@@ -24,3 +24,9 @@
     min-width: 200px;
     max-width: 50%;
   }
+  .styleButao{
+    height: 45px;
+    font-size: 32px;
+    font-style: italic;
+    background-color: chartreuse;
+  }

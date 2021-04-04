@@ -1,32 +1,41 @@
 angular.module('app').controller('controlePedido',['$scope',function($scope,){
+$scope.soNumero = /^\d+$/;
 $scope.mostrarEndereco =false;
 $scope.finalizar="Finalizar";
-$scope.enderecoModal = function(){
+$scope.pedidos=[];
+const enderecoModal = function(){
     $scope.mostrarEndereco =true;
 }
- const cadastrarEndereco = function(){
-    $scope.mostrarEndereco =false;
-}
- const finalizar = function(){
+const finalizar = function(){
     return  console.log("aqui")
- }
-
-  
-$scope.acoesPedido = {
-         filalizar:{
-             nome:"Finalizar",
-             acao:finalizar,
-             style:"styleButao",
-         },
-         endereco:{
-             nome:"Endereço",
-             acao:cadastrarEndereco,
-             style:"styleButao2",
-         },
-         mesa:{
-            nome:"Mesas",
-            acao:cadastrarEndereco,
-            style:"styleButao3",
-        },
 }
+
+$scope.acoesPedido = {
+    filalizar:{
+        nome:"Finalizar",
+        acao:finalizar,
+        style:"styleButao",
+    },
+    endereco:{
+        nome:"Endereço",
+        acao:enderecoModal,
+        style:"styleButao2",
+    },
+    mesa:{
+        nome:"Mesas",
+        acao:enderecoModal,
+        style:"styleButao3",
+    },
+}
+$scope.cadastrarEndereco = function(cliente){
+    $scope.mostrarEndereco =false;
+    $scope.pedidos.push(cliente)
+    console.log(cliente)
+}
+
+    
+    
+
+ 
+
 }]);

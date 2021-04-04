@@ -1,20 +1,20 @@
-<form>
+<form name="formEndereco">
   <div class="row">
-    <div class="col-3">
-      <input type="text" class="form-control caixa " placeholder=" Nome">
-    </div>
-    <div >
-      <input type="text"  class="form-control caixa " placeholder="Telefone">
+    <div class="col-2">
+      <input type="text"  class="form-control caixa "ng-required="true"ng-model="cliente.telefone" ng-pattern="soNumero"ng-minlength="9" ng-maxlength="12" placeholder="Telefone">
     </div>
     <div class="col-3">
-      <input type="text" class="form-control caixa " placeholder="Endereco">
+      <input type="text" class="form-control caixa "pattern="[^0-9]+"ng-model="cliente.nome"  ng-required="true" placeholder=" Nome">
+    </div>
+    <div class="col-3">
+      <input type="text" class="form-control caixa "ng-model="cliente.endereco" placeholder="Endereco">
     </div>
     <div  class="col-2">
-      <input type="text"  class="form-control caixa " placeholder="Número">
+      <input type="text"  class="form-control caixa "ng-required="true"ng-model="cliente.numero" ng-pattern="soNumero" ng-maxlength="4" placeholder="Número">
     </div>
-    <button type="button" style="width: 9.5%;"ng-if="mostrarEndereco" ng-click="cadastrarEndereco()" class="btn btn-success caixa ">Cadastrar</button>
-   <!-- <btn-butao btn-nome ="Cadastrar"style="width: 9.5%;" class="btn btn-success caixa " acao="pesquisar()" ng-if="mostrarEndereco"></btn-butao> vou troca o outro butao por esse-->
-   </div>
+    <button type="button" style="width: 9.5%;"ng-if="mostrarEndereco" ng-click="cadastrarEndereco(cliente)" ng-disabled="formEndereco.$invalid" class="btn btn-success caixa ">Cadastrar</button>
+   
+  </div>
   
   
 </form>

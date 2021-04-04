@@ -27,7 +27,7 @@
   .styleButao{
     height: 45px;
     width: 75% ;
-    color: #000;
+    color: #fff;
     font-size: x-large;
     background-color: cadetblue;
   }
@@ -48,4 +48,15 @@
     color: #000;
     font-size: x-large;
     
+  }
+  .classePedido{
+    margin-top: 15px;
+    margin-left: 14px;
+    line-height: 80%;
+  }
+  p{
+    color: #000;
+    margin-left: 15px;
+    margin-right: 10px;
+
   }

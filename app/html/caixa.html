@@ -3,29 +3,30 @@
  <form ng-controller="controlePedido">
             <div class="form-group" style="margin-right: 50px;">
                 <h4>Nome do produto</h4>
-                <input class="form-control caixa" >
+                <input class="form-control caixa"ng-model="produto.nome" pattern="[^0-9]+"  ng-required="true">
             </div>
+          
          <div class="form-row"  >     
                 <div class="form-group caixa col-1"  >
                         <h4 >Código</h4>
-                        <input type="text" class="form-control caixa"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                        <input type="text" class="form-control caixa" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-2"  >
                     <h4 >Quantidade</h4>
-                    <input type="text" class="form-control caixa"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                    <input type="text" class="form-control caixa" ng-model="produto.Quantidade"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-1" >
                     <h4 >Mesa</h4>
-                    <input type="text" class="form-control caixa"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                    <input type="text" class="form-control caixa" ng-model="produto.mesa"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-3"   >
                     <h4 >Observação</h4>
-                    <input type="text" class="form-control caixa"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                    <input type="text" class="form-control caixa"pattern="[^0-9]+" ng-model="produto.observacao">
                 </div>
                 <div class="form-group " >
                     <h3></h3>
                    <!--<button type="button"ng-click="enderecoModal()" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-left: 25%; width: 150%; color: #000;" class="btn  caixa"><h4>Endereço</h4></button>-->
-                   <btn-butao  btn-nome="acoesPedido.endereco.nome" style ="acoesPedido.endereco.style"acao="acoesPedido.finalizar.acao()"></btn-butao>
+                   <btn-butao  btn-nome="acoesPedido.endereco.nome" style ="acoesPedido.endereco.style"acao="acoesPedido.endereco.acao()"></btn-butao>
                 </div>
                 <div class="form-group " style="margin-left: 8%;" >
                     <h3></h3>
@@ -34,7 +35,11 @@
                 </div>
         </div>  
             <form-endereco ng-if="mostrarEndereco"></form-endereco>
+
                <div class="forme" style="margin-top: 10px;">
+                 <div ng-repeat="mesa in mesas">
+                      {{mesa.numero}}
+                 </div>
                     <div class="precoVenda">
                          
                             <div class="form-group ">
@@ -56,8 +61,10 @@
                     </div>
                     
                        <!-- <textarea class="form-control " id="exampleFormControlTextarea1" ></textarea> -->
-                       <div class="textarea">
-
+                    <div class="textarea">
+                        <ul ng-repeat="pedido in pedidos">
+                            <li class="row classePedido"><p>Telefone:</p>{{pedido.telefone}} <p>Nome:</p>{{pedido.nome}}   <p>Endereço:</p>   {{pedido.endereco}}  <p>Número:</p> {{pedido.numero}} </li>
+                        </ul>
                        </div>
                
                 </div>   

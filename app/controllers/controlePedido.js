@@ -4,19 +4,29 @@ $scope.finalizar="Finalizar";
 $scope.enderecoModal = function(){
     $scope.mostrarEndereco =true;
 }
-$scope.cadastrarEndereco = function(){
+ const cadastrarEndereco = function(){
     $scope.mostrarEndereco =false;
 }
  const finalizar = function(){
-      
+    return  console.log("aqui")
  }
 
   
 $scope.acoesPedido = {
          filalizar:{
-               nome:"Finalizar",
-               acao:finalizar,
-               style:"styleButao",
-         }
+             nome:"Finalizar",
+             acao:finalizar,
+             style:"styleButao",
+         },
+         endereco:{
+             nome:"Endereço",
+             acao:cadastrarEndereco,
+             style:"styleButao2",
+         },
+         mesa:{
+            nome:"Mesas",
+            acao:cadastrarEndereco,
+            style:"styleButao3",
+        },
 }
 }]);

@@ -26,7 +26,26 @@
   }
   .styleButao{
     height: 45px;
-    font-size: 32px;
-    font-style: italic;
-    background-color: chartreuse;
+    width: 75% ;
+    color: #000;
+    font-size: x-large;
+    background-color: cadetblue;
+  }
+  .styleButao2{
+    margin-top: 17px;
+    margin-left: 25%;
+    width: 130%;
+    height: 47px;
+    color: #000;
+    font-size: x-large;
+  }
+  .styleButao3{
+    margin-top: 17px;
+    margin-left: 25%;
+    width: 170%;
+    height: 47px;
+  
+    color: #000;
+    font-size: x-large;
+    
   }

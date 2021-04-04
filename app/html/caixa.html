@@ -24,11 +24,13 @@
                 </div>
                 <div class="form-group " >
                     <h3></h3>
-                    <button type="button"ng-click="enderecoModal()" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-left: 25%; width: 150%; color: #000;" class="btn  caixa"><h4>Endereço</h4></button>
+                   <!--<button type="button"ng-click="enderecoModal()" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-left: 25%; width: 150%; color: #000;" class="btn  caixa"><h4>Endereço</h4></button>-->
+                   <btn-butao  btn-nome="acoesPedido.endereco.nome" style ="acoesPedido.endereco.style"acao="acoesPedido.finalizar.acao()"></btn-butao>
                 </div>
                 <div class="form-group " style="margin-left: 8%;" >
                     <h3></h3>
-                    <button type="button" style="margin-top: 15px;width: 180%; color: #000;" class="btn btn caixa"><h4>Mesas</h4></button>
+                   <!-- <button type="button" style="margin-top: 15px;width: 180%; color: #000;" class="btn btn caixa"><h4>Mesas</h4></button>-->
+                   <btn-butao  btn-nome="acoesPedido.mesa.nome" style ="acoesPedido.mesa.style"acao="acoesPedido.mesa.acao()"></btn-butao>
                 </div>
         </div>  
             <form-endereco ng-if="mostrarEndereco"></form-endereco>
@@ -46,7 +48,7 @@
                             </div>
                          
                             <div >
-                                <btn-butao  btn-nome="acoesPedido.filalizar.nome" style ="acoesPedido.finalizar.style"acao="acoesPedido.finalizar.acao()"></btn-butao>
+                                <btn-butao  btn-nome="acoesPedido.filalizar.nome" style ="acoesPedido.filalizar.style"acao="acoesPedido.finalizar.acao()"></btn-butao>
   
                                 <!--<btn-butao  btn-nome ="finalizar" ></btn-butao> -->
             

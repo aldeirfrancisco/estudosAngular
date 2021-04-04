@@ -1,27 +1,28 @@
 
     
- <form ng-controller="controlePedido">
-            <div class="form-group" style="margin-right: 50px;">
-                <h4>Nome do produto</h4>
-                <input class="form-control caixa"ng-model="produto.nome" pattern="[^0-9]+"  ng-required="true">
-            </div>
+ <form ng-controller="controlePedido"name="formPedido">
+    
+     <div class="form-group" style="margin-right: 50px;">
+        <h4>Nome do produto</h4>
+        <input class="form-control caixa" id="idnome"name="nome" ng-model="produto.produtoNome" pattern="[^0-9]+"  ng-required="true">
+    </div>
           
          <div class="form-row"  >     
                 <div class="form-group caixa col-1"  >
                         <h4 >Código</h4>
-                        <input type="text" class="form-control caixa" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                        <input type="text"id="idcodigo"name="codigo" class="form-control caixa" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-2"  >
                     <h4 >Quantidade</h4>
-                    <input type="text" class="form-control caixa" ng-model="produto.Quantidade"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                    <input type="text" class="form-control caixa"id="idquantidade"name="quantidade" ng-model="produto.Quantidade"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-1" >
                     <h4 >Mesa</h4>
-                    <input type="text" class="form-control caixa" ng-model="produto.mesa"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
+                    <input type="text" class="form-control caixa"id="idmesa"name="mesa" ng-model="produto.mesa"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
                 </div>
                 <div class="form-group col-3"   >
                     <h4 >Observação</h4>
-                    <input type="text" class="form-control caixa"pattern="[^0-9]+" ng-model="produto.observacao">
+                    <input type="text" class="form-control caixa"pattern="[^0-9]+"id="idobs"name="obs" ng-model="produto.obs">
                 </div>
                 <div class="form-group " >
                     <h3></h3>
@@ -63,7 +64,8 @@
                        <!-- <textarea class="form-control " id="exampleFormControlTextarea1" ></textarea> -->
                     <div class="textarea">
                         <ul ng-repeat="pedido in pedidos">
-                            <li class="row classePedido"><p>Telefone:</p>{{pedido.telefone}} <p>Nome:</p>{{pedido.nome}}   <p>Endereço:</p>   {{pedido.endereco}}  <p>Número:</p> {{pedido.numero}} </li>
+                            <li ng-if="pedido.clienteNome" class="row classePedido"><p>Telefone:</p>{{pedido.telefone}} <p>Nome:</p>{{pedido.clienteNome}}   <p>Endereço:</p>   {{pedido.endereco}}  <p>Número:</p> {{pedido.numero}} </li>
+                            <li class="row classePedido"> {{pedido.produtoNome}}<p></p> {{pedido.codigo}}<p></p>{{predido.quantidade}}<p></p>{{pedido.mesa}}<p></p>{{pedido.observacao}} </li>
                         </ul>
                        </div>
                

@@ -16,7 +16,10 @@ const finalizar = function(){
 const mesaModal =function(){
       $modal.open({
          templateUrl: 'html/modal.html',
-         controller: 'modalControler as controlerModal'
+         controller: 'modalControler as controlerModal',
+         backdrop:'static',
+         size:'lg',
+       
         });
       
 }

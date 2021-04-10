@@ -1,4 +1,4 @@
-angular.module('app').controller('controlePedido',['$scope',function($scope,){
+angular.module('app').controller('controlePedido',['$scope','$modal',function($scope,$modal){
     $scope.soNumero = /^\d+$/;
     $scope.mostrarEndereco =false;
     $scope.campo=false;
@@ -6,14 +6,20 @@ angular.module('app').controller('controlePedido',['$scope',function($scope,){
     $scope.pedidos=[];
     $scope.produtos =[];
   
-const enderecoModal = function(){
+const endereco= function(){
     $scope.mostrarEndereco =true;
     
 }
 const finalizar = function(){
     return  console.log("aqui")
 }
-
+const mesaModal =function(){
+      $modal.open({
+         templateUrl: 'html/modal.html',
+         controller: 'modalControler as controlerModal'
+        });
+      
+}
 $scope.acoesPedido = {
     filalizar:{
         nome:"Finalizar",
@@ -22,16 +28,19 @@ $scope.acoesPedido = {
     },
     endereco:{
         nome:"Endereço",
-        acao:enderecoModal,
+        acao:endereco,
         style:"styleButao2",
     },
     mesa:{
         nome:"Mesas",
-        acao:enderecoModal,
+        acao: mesaModal,
         style:"styleButao3",
     },
 }
 
+$scope.abrir =function(){
+    cadastroServico.abrir;
+}
 $scope.cadastrarEndereco = function(cliente){
     $scope.mostrarEndereco =false;
     $scope.pedidos.push(cliente)
@@ -72,6 +81,7 @@ $scope.cadastrarEndereco = function(cliente){
             $scope.pedidos;
          }
   
+         
  init();
 
 }]);

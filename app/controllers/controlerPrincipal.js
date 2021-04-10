@@ -1,7 +1,7 @@
 
 
-  angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams',
-  function($scope,cadastroServico,$routeParams,){
+  angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams','CadastroFactory',
+  function($scope,cadastroServico,$routeParams,CadastroFactory,){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 $scope.soNumero = /^\d+$/;
 $scope.mostrarImput=false;
@@ -9,7 +9,8 @@ $scope.mostrarButao = true;
 $scope.categoria ="Tipos";
 $scope.butaoNome="salvar";
 $scope.nomeAcao="salvar";
-
+ const a =CadastroFactory.listaProduto;
+ console.log(a)
 $scope.produtos=[
   {id:1,codigo:2, nome:'café',preco:500,categoria:"Bebidas"},
   {id:2,codigo:3, nome:'Calabresa',preco:550,categoria:"pizzas"},

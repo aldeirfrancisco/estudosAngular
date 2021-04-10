@@ -1,3 +1,3 @@
- angular.module('app',['ngRoute']);
+ angular.module('app',['ngRoute','ui.bootstrap']);
  
     //angular.module('app',['ngRoute']);

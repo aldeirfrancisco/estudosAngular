@@ -1,19 +1,27 @@
-angular.module('app').controller('controlePedido',['$scope','$modal',function($scope,$modal){
+angular.module('app').controller('controlePedido',['$scope','$modal','$routeParams',function($scope,$modal,$routeParams){
     $scope.soNumero = /^\d+$/;
     $scope.mostrarEndereco =false;
     $scope.campo=false;
     $scope.finalizar="Finalizar";
     $scope.pedidos=[];
+    $scope.produto={}
     $scope.produtos =[];
   
+    if($routeParams.mesa){
+       let mesa = $routeParams.mesa;
+     
+       $scope.produto.mesa = mesa;
+       };
 const endereco= function(){
     $scope.mostrarEndereco =true;
     
-}
+};
 const finalizar = function(){
-    return  console.log("aqui")
-}
+    return  console.log("aqui");
+};
+
 const mesaModal =function(){
+    $scope.mostrarEndereco =false;
       $modal.open({
          templateUrl: 'html/modal.html',
          controller: 'modalControler as controlerModal',
@@ -21,8 +29,7 @@ const mesaModal =function(){
          size:'lg',
        
         });
-      
-}
+};
 $scope.acoesPedido = {
     filalizar:{
         nome:"Finalizar",
@@ -39,15 +46,15 @@ $scope.acoesPedido = {
         acao: mesaModal,
         style:"styleButao3",
     },
-}
+};
 
 $scope.abrir =function(){
     cadastroServico.abrir;
-}
+};
 $scope.cadastrarEndereco = function(cliente){
     $scope.mostrarEndereco =false;
-    $scope.pedidos.push(cliente)
-}
+    $scope.pedidos.push(cliente);
+};
   
 
         $(document).keypress(function(e) {
@@ -82,7 +89,7 @@ $scope.cadastrarEndereco = function(cliente){
 
          const init = ()=>{
             $scope.pedidos;
-         }
+         };
   
          
  init();

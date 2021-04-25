@@ -1,7 +1,7 @@
 
 
-  angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams','CadastroFactory',
-  function($scope,cadastroServico,$routeParams,CadastroFactory,){
+  angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams','CadastroFactory','$location',
+  function($scope,cadastroServico,$routeParams,CadastroFactory,$location,){
 //filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 $scope.soNumero = /^\d+$/;
 $scope.mostrarImput=false;
@@ -9,8 +9,7 @@ $scope.mostrarButao = true;
 $scope.categoria ="Tipos";
 $scope.butaoNome="salvar";
 $scope.nomeAcao="salvar";
- const a =CadastroFactory.listaProduto;
- console.log(a)
+
 $scope.produtos=[
   {id:1,codigo:2, nome:'café',preco:500,categoria:"Bebidas"},
   {id:2,codigo:3, nome:'Calabresa',preco:550,categoria:"pizzas"},
@@ -24,6 +23,7 @@ $scope.produtos=[
   $scope.categoria =$scope.produtos[id].categoria
     $scope.produto = $scope.produtos[id]
     $scope.butaoNome="atualizar";
+    $scope.nomeAcao="atualizar";
     $scope.mostrarImput ==false ? $scope.mostrarButao = false :$scope.mostrarButao = true 
 }
 
@@ -45,11 +45,20 @@ const salvar = function(produto){
   $scope.formProduto.$setPristine()
 }
 const atualizar= function(produto){
-  $scope.butaoNome="atualizar";
-  $scope.nomeAcao="atualizar";
-  deletarProduto(produto);
-  salvar(produto)
+  $scope.deletarProduto(produto);
+   salvar(produto)
+
+  $scope.mostrarImput=false;
+  $scope.categoria ="Tipos";
+  $scope.mostrarButao = true;
+  $scope.nomeAcao="salvar";
+  $scope.butaoNome="salvar";
+  $location.path('/cadastrar');
+ 
 }
+
+
+
 $scope.acoes ={
          atualizar:{
               nome:"Atualizar", 

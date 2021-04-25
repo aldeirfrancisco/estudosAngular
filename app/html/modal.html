@@ -9,8 +9,8 @@
             <div class="row">
 
                 <div  ng-repeat="mesa in numero" style="margin-left: 10px;margin-top: 5px;" >
-                    <button type="button" class="btn btn-success"> {{mesa}}</button>
-                    
+                   <a href="/#/cadastrar/caixa/{{mesa}}"><button style="min-width: 50px !important;" type="button" class="btn btn-success" ng-click="getMesa()"> {{mesa}}</button></a>
+                
                 </div>
             </div>
   

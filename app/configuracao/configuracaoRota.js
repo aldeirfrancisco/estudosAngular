@@ -14,8 +14,14 @@ angular.module('app')
                             templateUrl: 'html/form.html',
                             controller: 'appControler',
             });
+            
             $routeProvider
             .when('/cadastrar/caixa',{
+                    templateUrl: 'html/caixa.html',
+                    //controller: 'appControler',
+             });
+             $routeProvider
+            .when('/cadastrar/caixa/:mesa',{
                     templateUrl: 'html/caixa.html',
                     //controller: 'appControler',
              });

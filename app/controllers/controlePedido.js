@@ -1,4 +1,4 @@
-angular.module('app').controller('controlePedido',['$scope','$modal','$routeParams',function($scope,$modal,$routeParams){
+angular.module('app').controller('controlePedido',['$scope','$modal','$routeParams','CadastroFactory',function($scope,$modal,$routeParams,CadastroFactory){
     $scope.soNumero = /^\d+$/;
     $scope.mostrarEndereco =false;
     $scope.campo=false;
@@ -9,7 +9,6 @@ angular.module('app').controller('controlePedido',['$scope','$modal','$routePara
   
     if($routeParams.mesa){
        let mesa = $routeParams.mesa;
-     
        $scope.produto.mesa = mesa;
        };
 const endereco= function(){
@@ -55,7 +54,7 @@ $scope.cadastrarEndereco = function(cliente){
     $scope.mostrarEndereco =false;
     $scope.pedidos.push(cliente);
 };
-  
+ 
 
         $(document).keypress(function(e) {
             let produto={};
@@ -88,6 +87,7 @@ $scope.cadastrarEndereco = function(cliente){
         });
 
          const init = ()=>{
+    
             $scope.pedidos;
          };
   

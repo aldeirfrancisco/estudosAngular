@@ -1,5 +1,7 @@
 {
-    "port": 8000,
+  "cors":true,
+    "port": 8080,
     "files": ["../app/**/*.{html,html,css,js}"],
     "server": { "baseDir": "./app" }
   }
+ 

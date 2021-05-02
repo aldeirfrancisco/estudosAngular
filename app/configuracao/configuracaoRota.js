@@ -3,7 +3,7 @@
 
 angular.module('app')
        .config(function ($routeProvider,$locationProvider) {
-        $locationProvider.html5Mode(false);
+        $locationProvider.html5Mode(true);
             $routeProvider
                     .when('/cadastrar',{
                             templateUrl: 'html/form.html',

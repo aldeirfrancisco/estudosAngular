@@ -1,6 +1,6 @@
 (function (){
 
-    angular.module('app').service('cadastroServico',['$http', function($http) {
+    angular.module('app').service('CadastroServico',['$http', function($http,) {
     
         this.pegandoSoNumero = dinheiro =>dinheiro.split("").filter(n => (Number(n) || n == 0)).join("");
         
@@ -13,9 +13,10 @@
 
         }
        
-        
-
-
+        this.listaProduto =()=>{
+            return $http.get("https://frentecaixa.herokuapp.com/produtos");
+           };
+       
 
     }]);
     

@@ -1,24 +1,27 @@
 (function(){ 
 
-  angular.module('app').controller('appControler',['$scope','cadastroServico','$routeParams','CadastroFactory','$location',
-  function($scope,cadastroServico,$routeParams,CadastroFactory,$location,){
-//filter var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-$scope.soNumero = /^\d+$/;
+  angular.module('app').controller('appControler',['$scope','CadastroServico','$routeParams','CadastroFactory','$location',
+  function($scope,CadastroServico,$routeParams,CadastroFactory,$location,){
+    let vm = this;
+
+vm.soNumero = /^\d+$/;
 $scope.mostrarImput=false;
 $scope.mostrarButao = true;
 $scope.categoria ="Tipos";
 $scope.butaoNome="salvar";
 $scope.nomeAcao="salvar";
 
-//   const jprodutos=[
-//    {id:1,codigo:2, nome:'café',preco:500,categoria:"Bebidas"},
-//    {id:2,codigo:3, nome:'Calabresa',preco:550,categoria:"pizzas"},
-//   {id:3,codigo:4, nome:'misto',preco:350,categoria:"Lanche"},
-//   {id:4,codigo:5, nome:'Suco',preco:800,categoria:"bebidas"}
-//  ];
-let listProdutos =JSON.parse(localStorage.getItem('produtos') || '[]');
- $scope.nomeButao=["Pesquisar"]
- $scope.produtos = listProdutos;
+ const listaProduto = ()=>{
+          CadastroServico.listaProduto().then((response)=>{
+            vm.produtos =response.data;
+      },function (error){
+         console.log(error)
+      });
+
+    }
+ 
+
+ $scope.nomeButao=["Pesquisar"];
  if($routeParams.id){
   let id =$routeParams.id -1; 
   $scope.categoria = listProdutos[id].categoria
@@ -85,8 +88,8 @@ $scope.formatReal = function (dinheiro){
         dinheiro = dinheiro+'';
         dinheiro
         
-        dinheiro = cadastroServico.pegandoSoNumero(dinheiro)
-        dinheiro = cadastroServico.formatarRealServe (dinheiro)
+        dinheiro = CadastroServico.pegandoSoNumero(dinheiro)
+        dinheiro = CadastroServico.formatarRealServe (dinheiro)
         return dinheiro
 }
 $scope.deletarProduto= function(produto){
@@ -103,8 +106,7 @@ $scope.pesquisar=function(){
     $scope.butaoNome="atualizar";
 }
  const init =()=>{
- // localStorage.setItem("produtos",JSON.stringify(produtos));
-  CadastroFactory.localStorageDados();
+  listaProduto()
  }
  init();
  

@@ -3,14 +3,9 @@ angular.module('app').directive('tabelasProdutos', function() {
 
         restrict: 'E',
         templateUrl:  'html/tabela.html',
-        
-        link: function (scope,element){
-           
-            // $(function(){
-            //     $("#CampoPreco").maskMoney({symbol:'false', 
-            //     showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
-             
-            // })
+        scope:{
+         obj:'='
         }
+      
     };
   });

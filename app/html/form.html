@@ -1,56 +1,58 @@
+ <div ng-controller="appControler as obj">
+          <form style="margin-left: 30px;" name="formProduto" > 
+            
+                  <div class="orm-control col-5">
+                        <label  >Nome do Produto</label>
+                        <input type="text" class="form-control"pattern="[^0-9]+" id="inputNome" ng-model="produto.nome" name="nome" ng-required="true">
+                  </div>
+                  
+                  <div ng-show="formProduto.nome.$error.required && formProduto.nome.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
+                      Por favor, preencha o nome
+                  </div>
 
-  <form style="margin-left: 30px;" name="formProduto"> 
-    <div class="orm-control col-5">
-          <label  >Nome do Produto</label>
-          <input type="text" class="form-control"pattern="[^0-9]+" id="inputNome" ng-model="produto.nome" name="nome" ng-required="true">
-    </div>
-    
-    <div ng-show="formProduto.nome.$error.required && formProduto.nome.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
-         Por favor, preencha o nome
-    </div>
+                  <div class="form-row" style="margin-top: 10px; margin-left: 10px;">     
+                      <div class="form-group col-1">
+                              <label >Código</label>
+                              <input type="text" class="form-control"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="obj.soNumero" ng-maxlength="3">
+                      </div>
+                      <div class="form-group col-1">
+                        <label >Preço </label>
+                        <input type="text" class="form-control"name="preco"ng-pattern="obj.soNumero" ng-model="produto.preco" ng-required="true" id="CampoPreco" placeholder="0,00">
+                      </div>
+                      <div class="form-group col-2">
+                        <label >Tamanho </label>
+                        <input type="text" class="form-control"name="tamanho" ng-model="produto.tamanho" ng-required="true">
+                      </div>
+                  </div>  
 
-    <div class="form-row" style="margin-top: 10px; margin-left: 10px;">     
-        <div class="form-group col-1">
-                <label >Código</label>
-                <input type="text" class="form-control"name="codigo" ng-model="produto.codigo"ng-required="true"ng-pattern="soNumero" ng-maxlength="3">
-        </div>
-        <div class="form-group col-1">
-          <label >Preço </label>
-          <input type="text" class="form-control"name="preco"ng-pattern="soNumero" ng-model="produto.preco" ng-required="true" id="CampoPreco" placeholder="0,00">
-        </div>
-        <div class="form-group col-2">
-          <label >Tamanho </label>
-          <input type="text" class="form-control"name="tamanho" ng-model="produto.tamanho" ng-required="true">
-        </div>
-    </div>  
+                  <div ng-show="formProduto.codigo.$error.required && formProduto.codigo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
+                  Por favor, preencha o Código
+                </div> 
+                <div ng-show="formProduto.preco.$error.required && formProduto.preco.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
+                  Por favor, preencha o Preço
+                </div>
+              
 
-    <div ng-show="formProduto.codigo.$error.required && formProduto.codigo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
-     Por favor, preencha o Código
-   </div> 
-   <div ng-show="formProduto.preco.$error.required && formProduto.preco.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
-     Por favor, preencha o Preço
-  </div>
- 
+                    <div >
+                      <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produto.categoria"
+                      ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true">
+                      <option value="" >{{categoria}}</option>
+                    </select>
+                  </div>
 
-      <div >
-        <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produto.categoria"
-        ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true">
-        <option value="" >{{categoria}}</option>
-      </select>
-    </div>
+                  <div ng-show="formProduto.tipo.$error.required && formProduto.tipo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
+                  Por favor, preencha o tipo
+                </div>
+                      
+                  <div style="margin-top: 30px; margin-left: 16px;">
+                    <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto)"disabiltar="formProduto.$invalid"></btn-butao>
+                    <btn-butao btn-nome ="acoes.pesquisar.nome" style ="acoes.atualizar.style" acao="pesquisar()" ng-show="mostrarButao "></btn-butao>
+                  
+                  </div>
+            
+        </form>
+        <div style="margin-right: 60%;margin-top: 20px;">
+                <tabelas-produtos  obj ="obj.produtos"></tabelas-produtos>
+        </div> 
 
-    <div ng-show="formProduto.tipo.$error.required && formProduto.tipo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
-     Por favor, preencha o tipo
-   </div>
-        
-    <div style="margin-top: 30px; margin-left: 16px;">
-      <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto)"disabiltar="formProduto.$invalid"></btn-butao>
-      <btn-butao btn-nome ="acoes.pesquisar.nome" style ="acoes.atualizar.style" acao="pesquisar()" ng-show="mostrarButao "></btn-butao>
-    
-    </div>
-    
-</form>
-<div style="margin-right: 60%;margin-top: 20px;">
-  <tabelas-produtos></tabelas-produtos>
-</div> 
- 
+</div>

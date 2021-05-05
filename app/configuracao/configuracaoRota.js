@@ -10,7 +10,7 @@ angular.module('app')
                             controller: 'appControler',
             });
             $routeProvider
-                    .when('/cadastrar/editar/:id',{
+                    .when('/cadastrar/editar/:codigo',{
                             templateUrl: 'html/form.html',
                             controller: 'appControler',
             });

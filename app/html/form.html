@@ -17,7 +17,7 @@
                       </div>
                       <div class="form-group col-1">
                         <label >Preço </label>
-                        <input type="text" class="form-control"name="preco"ng-pattern="obj.soNumero" ng-model="produto.preco" ng-required="true" id="CampoPreco" placeholder="0,00">
+                        <input type="text" class="form-control"name="preco"numero-decimal ng-model="produto.preco" ng-required="true" id="CampoPreco" placeholder="0,00" >
                       </div>
                       <div class="form-group col-2">
                         <label >Tamanho </label>
@@ -34,7 +34,7 @@
               
 
                     <div >
-                      <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produto.categoria"
+                      <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produt.categoria"
                       ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true">
                       <option value="" >{{categoria}}</option>
                     </select>
@@ -45,7 +45,7 @@
                 </div>
                       
                   <div style="margin-top: 30px; margin-left: 16px;">
-                    <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto)"disabiltar="formProduto.$invalid"></btn-butao>
+                    <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto,produt)"disabiltar="formProduto.$invalid"></btn-butao>
                     <btn-butao btn-nome ="acoes.pesquisar.nome" style ="acoes.atualizar.style" acao="pesquisar()" ng-show="mostrarButao "></btn-butao>
                   
                   </div>

@@ -1,4 +1,4 @@
-angular.module('app').controller('controlePedido',['$scope','$modal','$routeParams','CadastroFactory',function($scope,$modal,$routeParams,CadastroFactory){
+angular.module('app').controller('controlePedido',['$scope','$modal','$routeParams',function($scope,$modal,$routeParams){
     $scope.soNumero = /^\d+$/;
     $scope.mostrarEndereco =false;
     $scope.campo=false;

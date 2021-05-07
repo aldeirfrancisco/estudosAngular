@@ -4,7 +4,8 @@ angular.module('app').directive('tabelasProdutos', function() {
         restrict: 'E',
         templateUrl:  'html/tabela.html',
         scope:{
-         obj:'='
+         obj:'=',
+         acao:'&'
         }
       
     };

@@ -19,7 +19,16 @@
        this.cadastrarProduto = (produto) =>{
         return $http.post("https://frentecaixa.herokuapp.com/produtos",produto);
        }
-
+       this.getProduto = (codigo) =>{
+        return $http.get(`https://frentecaixa.herokuapp.com/produtos/${codigo}`);
+       } 
+       this.deletar = (id)=>{
+           console.log(id)
+           return $http.delete(`https://frentecaixa.herokuapp.com/produtos/deletar/${id}`);
+       }
+       this.upProduto = (produto) =>{
+        return $http.put("https://frentecaixa.herokuapp.com/produtos/atualizar",produto);
+       } 
     }]);
     
         

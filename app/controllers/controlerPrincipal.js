@@ -13,7 +13,7 @@
 
             const listaProduto = ()=>{
                       CadastroServico.listaProduto().then((response)=>{
-                        getProduto(response.data);
+                        formatProdutos(response.data);
                   },function (error){
                     console.log(error);
                   });
@@ -24,67 +24,94 @@
             
               $scope.nomeButao=["Pesquisar"];
              const editarProduto = (produtos) => {
-                  if($routeParams.codigo){
-                   let  cod = $routeParams.codigo;
-                   for (let i = 0; i < produtos.length; i++) {
-                     if( cod == produtos[i].codigo){
-                       vm.produto =  produtos[i];
-                        }
-                     }
-                         $scope.butaoNome="atualizar";
-                         $scope.nomeAcao="atualizar";
-                         $scope.mostrarImput ==false ? $scope.mostrarButao = false :$scope.mostrarButao = true 
-                  }
-                }
+               let  cod = $routeParams.codigo;
+               if(cod){
+                  getProdutoCod(cod)
+                  $scope.nomeAcao="atualizar";
+                  $scope.butaoNome="atualizar";
+                   $scope.mostrarImput ==false ? $scope.mostrarButao = false :$scope.mostrarButao = true 
+                 }
+               
+                   }
+                
               $scope.selectProdutos=[
                 {categoria:"Bebidas", numero:1},
                 {categoria:"Pizzas", numero:2},
                 {categoria:"Lanche", numero:3}
               ]
-
+             const getProdutoCod = (codigo)=>{
+                  CadastroServico.getProduto(codigo).then((response)=>{
+                     
+                   return formatProduto(response.data);
+                  },function (error){
+                  console.error();
+                  }); 
+             };
 
 
               const salvar = function(produto,cat){
-                  produto.categoria =cat.categoria.categoria
-                  $scope.categoria ="Tipos";
-                  $scope.formProduto.$setPristine()
+                  
+                  produto.categoria =cat.categoria.categoria;
                   console.log(produto)
+                  $scope.formProduto.$setPristine()
+                
                 CadastroServico.cadastrarProduto(produto).then((response)=>{
-               
-
+                  listaProduto();
+                
                 },function(error){
                   console.log(error);
                 });
                 
               }
-              const atualizar= function(produto){
-                $scope.deletarProduto(produto);
-                salvar(produto)
-
-                $scope.mostrarImput=false;
-                $scope.categoria ="Tipos";
-                $scope.mostrarButao = true;
-                $scope.nomeAcao="salvar";
-                $scope.butaoNome="salvar";
+              const atualizar= function(produto,cat){
+               
                 $location.path('/cadastrar');
+                 console.log(produto)
+                CadastroServico.upProduto(produto).then(function(response){
+                  $scope.formProduto.$setPristine()
+                  $scope.mostrarImput=false;
+                  $scope.mostrarButao = true;
+                    $scope.nomeAcao="salvar";
+                    $scope.butaoNome="salvar";
+                  listaProduto();
+                },function(error){
+
+                });
               
               }
-              const getProduto = (produto)=>{
+              //lista produto na tabela
+              const formatProdutos = (produto)=>{
                   let prod={};
+                
                 for (let i = 0; i < produto.length; i++) {
+                      prod.id = produto[i].id;
                       prod.codigo = produto[i].codigo ;
                       prod.nome = produto[i].nome;
-
                       let tam = produto[i].tamanho;
                       prod.tamanho = tam[0].tamanho;
-
+                      
                       prod.preco = formatReal(tam[0].preco.preco);
                       vm.produtos.push(angular.copy(prod))
                       editarProduto(vm.produtos)
                  
                     }
               }
-
+              //buscar produto para edição
+              const formatProduto = (produto)=>{
+                let prod={};
+              for (let i = 0; i < produto.length; i++) {
+                    prod.id = produto[i].id;
+                    prod.codigo = produto[i].codigo ;
+                    prod.nome = produto[i].nome;
+                    let tam = produto[i].tamanho;
+                    prod.tamanho = tam[0].tamanho;
+                    prod.categoria = produto[i].categoria[0].nome
+                    prod.preco = formatReal(tam[0].preco.preco);
+                    $scope.produto= prod ;
+                    
+               
+                  }
+            }
 
 
               $scope.acoes ={
@@ -114,13 +141,13 @@
                       dinheiro = CadastroServico.formatarRealServe (dinheiro)
                       return dinheiro
               }
-              $scope.deletarProduto= function(produto){
-              for(lett in $scope.produtos){
-                  let aux = $scope.produtos[index];
-                  if(produto === aux){
-                      $scope.produtos.splice(index,1);
-                  }
-              }
+              $scope.deletarProduto= function(id){
+                CadastroServico.deletar(id).then(function (response){
+                  listaProduto();
+              },function (error){
+
+               console.log(error);
+              });
               }
               $scope.pesquisar=function(){
                   $scope.mostrarImput= true;

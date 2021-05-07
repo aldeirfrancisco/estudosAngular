@@ -32,10 +32,10 @@
                   Por favor, preencha o Preço
                 </div>
               
-
-                    <div >
+                <!-- ng-if="" butaoNome != 'atualizar' -->
+                 <div  ng-if="butaoNome != 'atualizar' ">
                       <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produt.categoria"
-                      ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true">
+                      ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true" >
                       <option value="" >{{categoria}}</option>
                     </select>
                   </div>
@@ -52,7 +52,7 @@
             
         </form>
         <div style="margin-right: 60%;margin-top: 20px;">
-                <tabelas-produtos  obj ="obj.produtos"></tabelas-produtos>
+                <tabelas-produtos  obj ="obj.produtos" acao="deletarProduto"></tabelas-produtos>
         </div> 
 
 </div>

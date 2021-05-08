@@ -10,6 +10,7 @@
             $scope.categoria ="Tipos";
             $scope.butaoNome="salvar";
             $scope.nomeAcao="salvar";
+           $scope.produt={}
 
             const listaProduto = ()=>{
                       CadastroServico.listaProduto().then((response)=>{
@@ -50,14 +51,14 @@
 
 
               const salvar = function(produto,cat){
-                  produto.categoria =cat;
+                  produto.categoria = cat.categoria;
+                  console.log(cat.categoria)
                   produto.preco = produto.preco.replace(/,/,'.');
                   $scope.formProduto.$setPristine()
                   console.log(produto)
-                  $scope.formProduto="";
-                CadastroServico.cadastrarProduto(produto).then((response)=>{
-                  listaProduto();
-                  
+                  CadastroServico.cadastrarProduto(produto).then((response)=>{
+                  $scope.produto="";
+                  $scope.produt = "";
                 },function(error){
                   console.log(error);
                 });
@@ -73,7 +74,7 @@
                   $scope.mostrarButao = true;
                     $scope.nomeAcao="salvar";
                     $scope.butaoNome="salvar";
-                  listaProduto();
+                 
                 },function(error){
 
                 });

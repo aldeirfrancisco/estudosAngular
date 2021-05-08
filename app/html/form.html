@@ -33,19 +33,20 @@
                 </div>
               
                 <!-- ng-if="" butaoNome != 'atualizar' -->
-                 <div  ng-if="butaoNome != 'atualizar' ">
-                      <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" ng-model="produt.categoria"
-                      ng-options=" selectProduto.categoria == categoria ? 'Tipo': selectProduto.categoria for selectProduto in selectProdutos" ng-required="true" >
-                      <option value="" >{{categoria}}</option>
-                    </select>
-                  </div>
+                <div  ng-if="butaoNome != 'atualizar' ">
+                  <select  class="form-control" style="width:150px; margin-left: 16px; height: 38px;" 
+                  ng-options=" selectProduto.categoria for selectProduto in selectProdutos"
+                  ng-model="produt.categori" ng-required="true" >
+                  <option value="" >{{categoria}}</option>
+                </select>
+              </div>
 
                   <div ng-show="formProduto.tipo.$error.required && formProduto.tipo.$dirty" class="form-control  alert-danger" style="width: 39%; margin-top: 10px;margin-left: 15px;"> 
                   Por favor, preencha o tipo
                 </div>
                       
                   <div style="margin-top: 30px; margin-left: 16px;">
-                    <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto,produt.categoria)"disabiltar="formProduto.$invalid"></btn-butao>
+                    <btn-butao  btn-nome="acoes[butaoNome].nome" style ="acoes.atualizar.style"acao="acoes[nomeAcao].acao(produto,produt.categori)"disabiltar="formProduto.$invalid"></btn-butao>
                     <btn-butao btn-nome ="acoes.pesquisar.nome" style ="acoes.atualizar.style" acao="pesquisar()" ng-show="mostrarButao "></btn-butao>
                   
                   </div>

@@ -50,14 +50,14 @@
 
 
               const salvar = function(produto,cat){
-                  
-                  produto.categoria =cat.categoria.categoria;
-                  console.log(produto)
+                  produto.categoria =cat;
+                  produto.preco = produto.preco.replace(/,/,'.');
                   $scope.formProduto.$setPristine()
-                
+                  console.log(produto)
+                  $scope.formProduto="";
                 CadastroServico.cadastrarProduto(produto).then((response)=>{
                   listaProduto();
-                
+                  
                 },function(error){
                   console.log(error);
                 });
@@ -142,8 +142,9 @@
                       return dinheiro
               }
               $scope.deletarProduto= function(id){
+                listaProduto();
                 CadastroServico.deletar(id).then(function (response){
-                  listaProduto();
+                  console.log(response.data)
               },function (error){
 
                console.log(error);
